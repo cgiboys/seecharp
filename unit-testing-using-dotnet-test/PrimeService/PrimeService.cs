@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace Prime.Services
 {
@@ -19,6 +20,12 @@ namespace Prime.Services
                 }
             }
             return true;
+        }
+
+        public int GetWeekNumber(int month, int day)
+        {
+            DateTime date = new DateTime(DateTime.Now.Year, month, day);
+            return CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(date, CalendarWeekRule.FirstDay, DayOfWeek.Sunday);
         }
     }
 }
